@@ -1,0 +1,5 @@
+= Eosbeat Docs
+
+Welcome to the Eosbeat documentation.
+
+
