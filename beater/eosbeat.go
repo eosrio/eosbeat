@@ -65,8 +65,8 @@ type Node struct {
 	AVR          float64
 }
 
+// Define client with 5 second timeout
 var httpClient = &http.Client{Timeout: 5 * time.Second}
-
 func getJson(url string, target interface{}) (int64, error) {
 	t := int64(0)
 	start := time.Now()
@@ -181,7 +181,7 @@ func genEvent(element Node, listOfNodes NodeList, index int) beat.Event {
 		return beat.Event{
 			Timestamp: time.Now(),
 			Fields: common.MapStr{
-				"target":           nodeURL,
+				"target":           listOfNodes.Nodes[index].NodeIP,
 				"source":           externalIP,
 				"latency":          respTime,
 				"block":            data.HeadBlockNum,
@@ -203,7 +203,7 @@ func (bt *Eosbeat) Run(b *beat.Beat) error {
 	if openerr != nil {
 		fmt.Println(openerr)
 	}
-	fmt.Println("Successfully Opened \"" + filePath + "\"")
+	fmt.Println("Node list loaded from \"" + filePath + "\"")
 	defer jsonFile.Close()
 	byteValue, _ := ioutil.ReadAll(jsonFile)
 	var nodeList NodeList
