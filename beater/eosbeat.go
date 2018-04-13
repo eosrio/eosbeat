@@ -11,6 +11,10 @@ import (
 	"encoding/json"
 	"os"
 	"io/ioutil"
+	"net"
+	"log"
+	"net/http/httptrace"
+	"strings"
 )
 
 type Eosbeat struct {
@@ -47,16 +51,18 @@ type NodeList struct {
 }
 
 type Node struct {
-	Name        string `json:"bp_name"`
-	Org         string `json:"organisation"`
-	Location    string `json:"location"`
-	NodeAddress string `json:"node_addr"`
-	PortHTTP    string `json:"port_http"`
-	PortSSL     string `json:"port_ssl"`
-	PortP2P     string `json:"port_p2p"`
-	Coordinates string
-	Responses   []float64
-	AVR         float64
+	Name         string `json:"bp_name"`
+	Org          string `json:"organisation"`
+	Location     string `json:"location"`
+	NodeAddress  string `json:"node_addr"`
+	PortHTTP     string `json:"port_http"`
+	PortSSL      string `json:"port_ssl"`
+	PortP2P      string `json:"port_p2p"`
+	ProducerName string `json:"bp_name"`
+	Coordinates  string
+	NodeIP       string
+	Responses    []float64
+	AVR          float64
 }
 
 var httpClient = &http.Client{Timeout: 5 * time.Second}
@@ -92,6 +98,102 @@ func findPublicIP(server string) string {
 	}
 }
 
+func trace(url string) string {
+	req, err := http.NewRequest("GET", url, nil)
+	if err != nil {
+		log.Fatal(err)
+	}
+	var ip net.IP
+	trace := &httptrace.ClientTrace{
+		DNSDone: func(dnsInfo httptrace.DNSDoneInfo) {
+			ip = dnsInfo.Addrs[0].IP
+		},
+		GotConn: func(connInfo httptrace.GotConnInfo) {
+			fmt.Printf("Got Conn: %+v\n", connInfo)
+		},
+	}
+	req = req.WithContext(httptrace.WithClientTrace(req.Context(), trace))
+	if _, err := http.DefaultTransport.RoundTrip(req); err != nil {
+		log.Println(err)
+		return "_"
+	}
+	return ip.String()
+}
+
+func measureConn(host, port string) {
+	conn, err := net.Dial("tcp", host+":"+port)
+	if err != nil {
+		log.Println(err)
+	} else {
+		defer conn.Close()
+		conn.Write([]byte("GET / HTTP/1.0\r\n\r\n"))
+
+		start := time.Now()
+		oneByte := make([]byte, 1)
+		_, err = conn.Read(oneByte)
+		if err != nil {
+			log.Println(err)
+		} else {
+			log.Println("First byte:", time.Since(start))
+
+			_, err = ioutil.ReadAll(conn)
+			if err != nil {
+				log.Println(err)
+			} else {
+				log.Println("Everything:", time.Since(start))
+			}
+		}
+	}
+}
+
+var externalIP string
+var proto = "http://"
+var endpoint = "/v1/chain/get_info"
+
+func genEvent(element Node, listOfNodes NodeList, index int) beat.Event {
+	nodeURL := element.NodeAddress + ":" + element.PortHTTP
+	measureConn(element.NodeAddress, element.PortHTTP)
+	if element.NodeIP == "" {
+		fmt.Println("Requesting:", nodeURL)
+		remoteIP := trace(proto + nodeURL + endpoint)
+		if len(remoteIP) > 6 {
+			listOfNodes.Nodes[index].NodeIP = remoteIP
+		}
+		fmt.Println("Remote IP:", remoteIP)
+	} else {
+		nodeURL = element.NodeIP + ":" + element.PortHTTP
+		fmt.Println("Requesting:", nodeURL)
+		trace(proto + nodeURL + endpoint)
+	}
+
+	data := new(GetInfoResponse)
+	var respTime float64
+	responseTime, err := getJson(proto+nodeURL+endpoint, &data)
+	if err != nil {
+		fmt.Println("Server is down")
+		return beat.Event{}
+	} else {
+		fmt.Println("Block:", data.HeadBlockNum)
+		fmt.Println("Producer:", data.HeadBlockProducer)
+		respTime = float64(responseTime) / 1000000
+		fmt.Println("Latency:", respTime, "ms")
+		listOfNodes.Nodes[index].Responses = append(element.Responses, respTime)
+		return beat.Event{
+			Timestamp: time.Now(),
+			Fields: common.MapStr{
+				"target":           nodeURL,
+				"source":           externalIP,
+				"latency":          respTime,
+				"block":            data.HeadBlockNum,
+				"current_producer": data.HeadBlockProducer,
+				"bp_name":          element.ProducerName,
+				"lastirrb":         data.LastIrreversibleBlockNum,
+				"org":              element.Org,
+				"location":         element.Location,
+			},
+		}
+	}
+}
 
 func (bt *Eosbeat) Run(b *beat.Beat) error {
 	logp.Info("eosbeat is running! Hit CTRL-C to stop it.")
@@ -107,6 +209,14 @@ func (bt *Eosbeat) Run(b *beat.Beat) error {
 	var nodeList NodeList
 	json.Unmarshal(byteValue, &nodeList)
 
+	for _, elem := range nodeList.Nodes {
+		fmt.Println(elem.NodeAddress + ":" + elem.PortHTTP)
+	}
+
+	externalIP = findPublicIP("http://myexternalip.com/raw")
+	externalIP = strings.TrimSuffix(externalIP, "\n")
+	fmt.Println("Firing requests from:", externalIP)
+
 	var err error
 	bt.client, err = b.Publisher.Connect()
 	if err != nil {
@@ -114,7 +224,7 @@ func (bt *Eosbeat) Run(b *beat.Beat) error {
 	}
 
 	ticker := time.NewTicker(bt.config.Period)
-	counter := 1
+	var index int
 	for {
 		select {
 		case <-bt.done:
@@ -122,33 +232,19 @@ func (bt *Eosbeat) Run(b *beat.Beat) error {
 		case <-ticker.C:
 		}
 
-		for index, element := range nodeList.Nodes {
-			data := new(GetInfoResponse)
-			nodeURL := "http://" + element.NodeAddress + ":" + element.PortHTTP + "/v1/chain/get_info"
-			responseTime, err := getJson(nodeURL, &data)
-			if err != nil {
-				fmt.Println("Server is down")
-			} else {
-				fmt.Println("Block:", data.HeadBlockNum)
-				fmt.Println("Producer:", data.HeadBlockProducer)
-				respTime := float64(responseTime) / 1000000
-				fmt.Println("Latency:", respTime, "ms")
-				nodeList.Nodes[index].Responses = append(element.Responses, respTime)
-			}
+		fmt.Println(string(index+1) + "/" + string(len(nodeList.Nodes)))
 
-			fmt.Println("-------")
-
-			event := beat.Event{
-				Timestamp: time.Now(),
-				Fields: common.MapStr{
-					"type":    b.Info.Name,
-					"counter": counter,
-				},
-			}
-			bt.client.Publish(event)
-			logp.Info("Event sent")
+		// Beat routine
+		evt := genEvent(nodeList.Nodes[index], nodeList, index)
+		if evt.Fields != nil {
+			bt.client.Publish(evt)
 		}
-		counter++
+		// End of routine
+
+		index++
+		if index >= len(nodeList.Nodes) {
+			index = 0
+		}
 	}
 }
 
