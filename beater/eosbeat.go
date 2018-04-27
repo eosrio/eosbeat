@@ -48,6 +48,7 @@ type GetInfoResponse struct {
 
 type NodeList struct {
 	Nodes []Node `json:"blockProducerList"`
+	Network string `json:"network"`
 }
 
 type Node struct {
@@ -67,6 +68,7 @@ type Node struct {
 
 // Define client with 5 second timeout
 var httpClient = &http.Client{Timeout: 5 * time.Second}
+
 func getJson(url string, target interface{}) (int64, error) {
 	t := int64(0)
 	start := time.Now()
@@ -117,6 +119,7 @@ func trace(url string) string {
 		log.Println(err)
 		return "_"
 	}
+	log.Println("trace done!")
 	return ip.String()
 }
 
@@ -128,19 +131,19 @@ func measureConn(host, port string) {
 		defer conn.Close()
 		conn.Write([]byte("GET / HTTP/1.0\r\n\r\n"))
 
-		start := time.Now()
+		// start := time.Now()
 		oneByte := make([]byte, 1)
 		_, err = conn.Read(oneByte)
 		if err != nil {
 			log.Println(err)
 		} else {
-			log.Println("First byte:", time.Since(start))
+			// log.Println("First byte:", time.Since(start))
 
 			_, err = ioutil.ReadAll(conn)
 			if err != nil {
 				log.Println(err)
 			} else {
-				log.Println("Everything:", time.Since(start))
+				// log.Println("Everything:", time.Since(start))
 			}
 		}
 	}
@@ -149,20 +152,24 @@ func measureConn(host, port string) {
 var externalIP string
 var proto = "http://"
 var endpoint = "/v1/chain/get_info"
+var testnetName string
 
 func genEvent(element Node, listOfNodes NodeList, index int) beat.Event {
 	nodeURL := element.NodeAddress + ":" + element.PortHTTP
 	measureConn(element.NodeAddress, element.PortHTTP)
+	var target string
 	if element.NodeIP == "" {
-		fmt.Println("Requesting:", nodeURL)
+		// fmt.Println("Requesting:", nodeURL)
 		remoteIP := trace(proto + nodeURL + endpoint)
 		if len(remoteIP) > 6 {
 			listOfNodes.Nodes[index].NodeIP = remoteIP
+			target = remoteIP
 		}
-		fmt.Println("Remote IP:", remoteIP)
+		// fmt.Println("Remote IP:", remoteIP)
 	} else {
 		nodeURL = element.NodeIP + ":" + element.PortHTTP
-		fmt.Println("Requesting:", nodeURL)
+		target = element.NodeIP
+		// fmt.Println("Requesting:", nodeURL)
 		trace(proto + nodeURL + endpoint)
 	}
 
@@ -173,15 +180,18 @@ func genEvent(element Node, listOfNodes NodeList, index int) beat.Event {
 		fmt.Println("Server is down")
 		return beat.Event{}
 	} else {
-		fmt.Println("Block:", data.HeadBlockNum)
-		fmt.Println("Producer:", data.HeadBlockProducer)
 		respTime = float64(responseTime) / 1000000
-		fmt.Println("Latency:", respTime, "ms")
 		listOfNodes.Nodes[index].Responses = append(element.Responses, respTime)
+		if target == "" {
+			target = listOfNodes.Nodes[index].NodeAddress
+		}
+		fmt.Println("Target:", target)
+		fmt.Println("Latency:", respTime, "ms")
 		return beat.Event{
 			Timestamp: time.Now(),
 			Fields: common.MapStr{
-				"target":           listOfNodes.Nodes[index].NodeIP,
+				"network":          testnetName,
+				"target":           target,
 				"source":           externalIP,
 				"latency":          respTime,
 				"block":            data.HeadBlockNum,
@@ -208,6 +218,8 @@ func (bt *Eosbeat) Run(b *beat.Beat) error {
 	byteValue, _ := ioutil.ReadAll(jsonFile)
 	var nodeList NodeList
 	json.Unmarshal(byteValue, &nodeList)
+
+	testnetName = nodeList.Network
 
 	for _, elem := range nodeList.Nodes {
 		fmt.Println(elem.NodeAddress + ":" + elem.PortHTTP)

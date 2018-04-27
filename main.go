@@ -2,7 +2,6 @@ package main
 
 import (
 	"os"
-
 	"github.com/eosrio/eosbeat/cmd"
 )
 
