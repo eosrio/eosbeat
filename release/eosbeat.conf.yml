@@ -1,0 +1,7 @@
+eosbeat:
+  period: 5s
+output.elasticsearch:
+  hosts: ["eosrio.io:9200"]
+  protocol: "http"
+  username: "changeME"
+  password: "changeME"

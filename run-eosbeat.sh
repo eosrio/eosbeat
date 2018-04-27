@@ -11,4 +11,4 @@ if [ -f "eosbeat.pid" ]; then
 	./stop-eosbeat.sh
 fi
 echo -e "Starting eosbeat..."
-./eosbeat -strict.perms=false > out.log 2> err.log & echo $! > eosbeat.pid
+./eosbeat -c eosbeat.conf.yml -strict.perms=false > out.log 2> err.log & echo $! > eosbeat.pid

@@ -1,7 +1,9 @@
 /.idea
 /build
-
+/vendor
 .DS_Store
 /eosbeat
 /eosbeat.test
 *.pyc
+vendor
+/release

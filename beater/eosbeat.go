@@ -47,7 +47,7 @@ type GetInfoResponse struct {
 }
 
 type NodeList struct {
-	Nodes []Node `json:"blockProducerList"`
+	Nodes   []Node `json:"blockProducerList"`
 	Network string `json:"network"`
 }
 
@@ -111,7 +111,7 @@ func trace(url string) string {
 			ip = dnsInfo.Addrs[0].IP
 		},
 		GotConn: func(connInfo httptrace.GotConnInfo) {
-			fmt.Printf("Got Conn: %+v\n", connInfo)
+			// fmt.Printf("Got Conn: %+v\n", connInfo)
 		},
 	}
 	req = req.WithContext(httptrace.WithClientTrace(req.Context(), trace))
@@ -119,7 +119,6 @@ func trace(url string) string {
 		log.Println(err)
 		return "_"
 	}
-	log.Println("trace done!")
 	return ip.String()
 }
 
@@ -185,8 +184,7 @@ func genEvent(element Node, listOfNodes NodeList, index int) beat.Event {
 		if target == "" {
 			target = listOfNodes.Nodes[index].NodeAddress
 		}
-		fmt.Println("Target:", target)
-		fmt.Println("Latency:", respTime, "ms")
+		fmt.Println("Target: "+target+" | Latency:", respTime, "ms")
 		return beat.Event{
 			Timestamp: time.Now(),
 			Fields: common.MapStr{
@@ -213,14 +211,12 @@ func (bt *Eosbeat) Run(b *beat.Beat) error {
 	if openerr != nil {
 		fmt.Println(openerr)
 	}
-	fmt.Println("Node list loaded from \"" + filePath + "\"")
 	defer jsonFile.Close()
 	byteValue, _ := ioutil.ReadAll(jsonFile)
 	var nodeList NodeList
 	json.Unmarshal(byteValue, &nodeList)
-
 	testnetName = nodeList.Network
-
+	fmt.Println("Active Testnet: ",testnetName)
 	for _, elem := range nodeList.Nodes {
 		fmt.Println(elem.NodeAddress + ":" + elem.PortHTTP)
 	}
@@ -237,22 +233,18 @@ func (bt *Eosbeat) Run(b *beat.Beat) error {
 
 	ticker := time.NewTicker(bt.config.Period)
 	var index int
+	index = 0
 	for {
 		select {
 		case <-bt.done:
 			return nil
 		case <-ticker.C:
 		}
-
-		fmt.Println(string(index+1) + "/" + string(len(nodeList.Nodes)))
-
-		// Beat routine
+		fmt.Println(index+1, "/", len(nodeList.Nodes))
 		evt := genEvent(nodeList.Nodes[index], nodeList, index)
 		if evt.Fields != nil {
 			bt.client.Publish(evt)
 		}
-		// End of routine
-
 		index++
 		if index >= len(nodeList.Nodes) {
 			index = 0

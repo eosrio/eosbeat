@@ -1,0 +1,429 @@
+Node list loaded from "nodes.json"
+jungle.cryptolions.io:8888
+dev.cryptolions.io:8888
+193.93.219.219:8888
+jungle.eosnewyork.io:8888
+ctestnet.edenx.io:8062
+mowgli.jungle3.eos.roelandp.nl:8765
+93.176.188.7:8888
+18.188.52.250:8877
+mosquito.prometeos.io:8889
+pearls.capital:8888
+eosrio.entropia.in:8889
+54.233.222.22:8886
+Jungle.eosuk.io:8427
+35.189.107.125:8888
+188.166.226.110:8888
+eosgreen.uk.to:8777
+bpseoul.eosnodeone.io:8888
+whale.eoscalgary.com:80
+bp4-d3.eos42.io:8888
+145.239.252.91:8888
+95.216.20.181:7010
+mpenjati.eosio.africa:8888
+testnet01.eoseoul.io:8801
+46.101.95.5:8888
+154.48.249.19:8888
+alessia.hkeos.com:8888
+cheetah.jungle3.bptn.eosamsterdam.net:8888
+robotikalis.ddns.net:8888
+testnet.eosindia.io:8888
+195.201.131.218:8888
+138.68.238.129:8890
+211.159.182.240:8888
+jungle.genereos.io:8888
+54.200.153.106:8888
+39.108.231.157:8888
+139.198.3.99:8888
+jungle.eoseco.net:8888
+193.93.219.219:6888
+jungle.eosphere.io:8888
+185.244.150.11:8888
+52.44.113.122:80
+testchain.jscut.org:8888
+120.79.155.118:8888
+testnet.eosdublin.io:8444
+eosslc.com:8889
+jungle.worbli.io:8888
+47.92.97.56:8888
+bp-test.eosasia.one:8800
+47.52.18.70:8388
+jungle.eos.blckchnd.com:8888
+128.1.133.206:8888
+47.52.64.9:8888
+52.37.122.21:8888
+eosbeijing.one:8888
+35.182.46.236:9879
+52.58.245.131:8888
+198.58.114.211:8888
+217.115.85.26:8888
+107.150.102.38:8888
+188.117.144.164:8889
+quokka.eosreal.io:8868
+119.3.22.124:8888
+node-d3.eos42.io:8888
+5280.duckdns.org:8888
+meow.eoslaomao.com:80
+dev.chainpool.io:7780
+eos-bp.bitfinex.com:8888
+34.251.121.82:8888
+173.212.227.190:8888
+node2-d3.eos42.io:8888
+bp-test.ono.chat:8888
+avocado-toast.sandwich.farm:8888
+18.219.28.205:8886
+axolotl.eoscalgary.com:80
+34.209.174.121:8888
+test.eosys.io:8888
+13.114.33.147:8888
+113.208.116.110:8888
+35.192.58.50:8888
+bptn.eosraychain.com:80
+13.211.63.122:8888
+54.189.199.39:8888
+eos.shangtv.cn:28888
+n2.eosargentina.io:8888
+Firing requests from: 201.18.14.130
+1 / 84
+Fetching data from http://jungle.cryptolions.io:8888/v1/chain/get_info
+Target: 94.154.212.15 | Latency: 750.378 ms
+2 / 84
+Fetching data from http://dev.cryptolions.io:8888/v1/chain/get_info
+Target: 88.99.97.30 | Latency: 457.017 ms
+3 / 84
+Fetching data from http://193.93.219.219:8888/v1/chain/get_info
+Target: 193.93.219.219 | Latency: 539.789 ms
+4 / 84
+Fetching data from http://jungle.eosnewyork.io:8888/v1/chain/get_info
+Target: 35.182.242.240 | Latency: 285.794 ms
+5 / 84
+Fetching data from http://ctestnet.edenx.io:8062/v1/chain/get_info
+Target: 79.136.20.192 | Latency: 450.487 ms
+6 / 84
+Fetching data from http://mowgli.jungle3.eos.roelandp.nl:8765/v1/chain/get_info
+Target: 95.216.8.243 | Latency: 504.885 ms
+7 / 84
+Fetching data from http://93.176.188.7:8888/v1/chain/get_info
+Server is down
+8 / 84
+Fetching data from http://18.188.52.250:8877/v1/chain/get_info
+Target: 18.188.52.250 | Latency: 263.799 ms
+9 / 84
+Fetching data from http://mosquito.prometeos.io:8889/v1/chain/get_info
+Target: 149.202.180.100 | Latency: 679.657 ms
+10 / 84
+Fetching data from http://pearls.capital:8888/v1/chain/get_info
+Target: 95.213.195.96 | Latency: 493.055 ms
+11 / 84
+Fetching data from http://eosrio.entropia.in:8889/v1/chain/get_info
+Target: 201.18.14.130 | Latency: 295.181 ms
+12 / 84
+Fetching data from http://54.233.222.22:8886/v1/chain/get_info
+Target: 54.233.222.22 | Latency: 34.958 ms
+13 / 84
+Fetching data from http://Jungle.eosuk.io:8427/v1/chain/get_info
+Target: 81.110.247.37 | Latency: 555.045 ms
+14 / 84
+Fetching data from http://35.189.107.125:8888/v1/chain/get_info
+Target: 35.189.107.125 | Latency: 422.231 ms
+15 / 84
+Fetching data from http://188.166.226.110:8888/v1/chain/get_info
+Target: 188.166.226.110 | Latency: 713.009 ms
+16 / 84
+Fetching data from http://eosgreen.uk.to:8777/v1/chain/get_info
+Target: 86.181.185.47 | Latency: 651.593 ms
+17 / 84
+Fetching data from http://bpseoul.eosnodeone.io:8888/v1/chain/get_info
+Target: 13.209.19.204 | Latency: 644.759 ms
+18 / 84
+Fetching data from http://whale.eoscalgary.com:80/v1/chain/get_info
+Server is down
+19 / 84
+Fetching data from http://bp4-d3.eos42.io:8888/v1/chain/get_info
+Target: 35.197.244.244 | Latency: 570.042 ms
+20 / 84
+Fetching data from http://145.239.252.91:8888/v1/chain/get_info
+Server is down
+21 / 84
+Fetching data from http://95.216.20.181:7010/v1/chain/get_info
+Target: 95.216.20.181 | Latency: 433.686 ms
+22 / 84
+Fetching data from http://mpenjati.eosio.africa:8888/v1/chain/get_info
+Server is down
+23 / 84
+Fetching data from http://testnet01.eoseoul.io:8801/v1/chain/get_info
+Target: 13.124.97.2 | Latency: 660.755 ms
+24 / 84
+Fetching data from http://46.101.95.5:8888/v1/chain/get_info
+Target: 46.101.95.5 | Latency: 365.517 ms
+25 / 84
+Fetching data from http://154.48.249.19:8888/v1/chain/get_info
+Server is down
+26 / 84
+Fetching data from http://alessia.hkeos.com:8888/v1/chain/get_info
+Target: 218.253.69.190 | Latency: 868.657 ms
+27 / 84
+Fetching data from http://cheetah.jungle3.bptn.eosamsterdam.net:8888/v1/chain/get_info
+Server is down
+28 / 84
+Fetching data from http://robotikalis.ddns.net:8888/v1/chain/get_info
+Target: 173.212.219.222 | Latency: 589.594 ms
+29 / 84
+Fetching data from http://testnet.eosindia.io:8888/v1/chain/get_info
+Target: 13.126.171.157 | Latency: 758.087 ms
+30 / 84
+Fetching data from http://195.201.131.218:8888/v1/chain/get_info
+Target: 195.201.131.218 | Latency: 395.307 ms
+31 / 84
+Fetching data from http://138.68.238.129:8890/v1/chain/get_info
+Target: 138.68.238.129 | Latency: 394.086 ms
+32 / 84
+Fetching data from http://211.159.182.240:8888/v1/chain/get_info
+Server is down
+33 / 84
+Fetching data from http://jungle.genereos.io:8888/v1/chain/get_info
+Server is down
+34 / 84
+Fetching data from http://54.200.153.106:8888/v1/chain/get_info
+Target: 54.200.153.106 | Latency: 500.464 ms
+35 / 84
+Fetching data from http://39.108.231.157:8888/v1/chain/get_info
+Server is down
+36 / 84
+Fetching data from http://139.198.3.99:8888/v1/chain/get_info
+Target: 139.198.3.99 | Latency: 656.376 ms
+37 / 84
+Fetching data from http://jungle.eoseco.net:8888/v1/chain/get_info
+Target: 52.199.160.95 | Latency: 1077.599 ms
+38 / 84
+Fetching data from http://193.93.219.219:6888/v1/chain/get_info
+Server is down
+39 / 84
+Fetching data from http://jungle.eosphere.io:8888/v1/chain/get_info
+Target: 52.62.218.130 | Latency: 732.006 ms
+40 / 84
+Fetching data from http://185.244.150.11:8888/v1/chain/get_info
+Target: 185.244.150.11 | Latency: 417.842 ms
+41 / 84
+Fetching data from http://52.44.113.122:80/v1/chain/get_info
+Target: 52.44.113.122 | Latency: 276.924 ms
+42 / 84
+Fetching data from http://testchain.jscut.org:8888/v1/chain/get_info
+Target: 35.174.47.102 | Latency: 310.43 ms
+43 / 84
+Fetching data from http://120.79.155.118:8888/v1/chain/get_info
+Target: 120.79.155.118 | Latency: 662.845 ms
+44 / 84
+Fetching data from http://testnet.eosdublin.io:8444/v1/chain/get_info
+Server is down
+45 / 84
+Fetching data from http://eosslc.com:8889/v1/chain/get_info
+Target: 209.41.67.115 | Latency: 492.053 ms
+46 / 84
+Fetching data from http://jungle.worbli.io:8888/v1/chain/get_info
+Target: 18.219.212.80 | Latency: 320.463 ms
+47 / 84
+Fetching data from http://47.92.97.56:8888/v1/chain/get_info
+Server is down
+48 / 84
+Fetching data from http://bp-test.eosasia.one:8800/v1/chain/get_info
+Target: 13.125.42.74 | Latency: 643.917 ms
+49 / 84
+Fetching data from http://47.52.18.70:8388/v1/chain/get_info
+Target: 47.52.18.70 | Latency: 663.07 ms
+50 / 84
+Fetching data from http://jungle.eos.blckchnd.com:8888/v1/chain/get_info
+Target: 94.130.89.239 | Latency: 450.594 ms
+51 / 84
+Fetching data from http://128.1.133.206:8888/v1/chain/get_info
+Target: 128.1.133.206 | Latency: 680.128 ms
+52 / 84
+Fetching data from http://47.52.64.9:8888/v1/chain/get_info
+Target: 47.52.64.9 | Latency: 691.461 ms
+53 / 84
+Fetching data from http://52.37.122.21:8888/v1/chain/get_info
+Target: 52.37.122.21 | Latency: 439.274 ms
+54 / 84
+Fetching data from http://eosbeijing.one:8888/v1/chain/get_info
+Target: 150.109.65.114 | Latency: 905.437 ms
+55 / 84
+Fetching data from http://35.182.46.236:9879/v1/chain/get_info
+Target: 35.182.46.236 | Latency: 248.189 ms
+56 / 84
+Fetching data from http://52.58.245.131:8888/v1/chain/get_info
+Target: 52.58.245.131 | Latency: 393.879 ms
+57 / 84
+Fetching data from http://198.58.114.211:8888/v1/chain/get_info
+Target: 198.58.114.211 | Latency: 319.047 ms
+58 / 84
+Fetching data from http://217.115.85.26:8888/v1/chain/get_info
+Target: 217.115.85.26 | Latency: 578.391 ms
+59 / 84
+Fetching data from http://107.150.102.38:8888/v1/chain/get_info
+Target: 107.150.102.38 | Latency: 379.302 ms
+60 / 84
+Fetching data from http://188.117.144.164:8889/v1/chain/get_info
+Target: 188.117.144.164 | Latency: 459.22 ms
+61 / 84
+Fetching data from http://quokka.eosreal.io:8868/v1/chain/get_info
+Target: 13.126.19.74 | Latency: 888.557 ms
+62 / 84
+Fetching data from http://119.3.22.124:8888/v1/chain/get_info
+Target: 119.3.22.124 | Latency: 698.667 ms
+63 / 84
+Fetching data from http://node-d3.eos42.io:8888/v1/chain/get_info
+Target: 35.189.101.183 | Latency: 700.55 ms
+64 / 84
+Fetching data from http://5280.duckdns.org:8888/v1/chain/get_info
+Target: 71.211.246.214 | Latency: 636.737 ms
+65 / 84
+Fetching data from http://meow.eoslaomao.com:80/v1/chain/get_info
+Target: 172.105.236.65 | Latency: 763.047 ms
+66 / 84
+Fetching data from http://dev.chainpool.io:7780/v1/chain/get_info
+Server is down
+67 / 84
+Fetching data from http://eos-bp.bitfinex.com:8888/v1/chain/get_info
+Target: 35.204.3.223 | Latency: 761.083 ms
+68 / 84
+Fetching data from http://34.251.121.82:8888/v1/chain/get_info
+Target: 34.251.121.82 | Latency: 450.099 ms
+69 / 84
+Fetching data from http://173.212.227.190:8888/v1/chain/get_info
+Target: 173.212.227.190 | Latency: 566.734 ms
+70 / 84
+Fetching data from http://node2-d3.eos42.io:8888/v1/chain/get_info
+Target: 35.197.203.157 | Latency: 580.166 ms
+71 / 84
+Fetching data from http://bp-test.ono.chat:8888/v1/chain/get_info
+Target: 13.115.235.41 | Latency: 784.192 ms
+72 / 84
+Fetching data from http://avocado-toast.sandwich.farm:8888/v1/chain/get_info
+Target: 188.166.116.31 | Latency: 577.961 ms
+73 / 84
+Fetching data from http://18.219.28.205:8886/v1/chain/get_info
+Target: 18.219.28.205 | Latency: 375.927 ms
+74 / 84
+Fetching data from http://axolotl.eoscalgary.com:80/v1/chain/get_info
+Target: 35.185.242.132 | Latency: 519.835 ms
+75 / 84
+Fetching data from http://34.209.174.121:8888/v1/chain/get_info
+Server is down
+76 / 84
+Fetching data from http://test.eosys.io:8888/v1/chain/get_info
+Target: 13.125.137.48 | Latency: 694.159 ms
+77 / 84
+Fetching data from http://13.114.33.147:8888/v1/chain/get_info
+Target: 13.114.33.147 | Latency: 598.898 ms
+78 / 84
+Fetching data from http://113.208.116.110:8888/v1/chain/get_info
+Server is down
+79 / 84
+Fetching data from http://35.192.58.50:8888/v1/chain/get_info
+Server is down
+80 / 84
+Fetching data from http://bptn.eosraychain.com:80/v1/chain/get_info
+Target: 47.90.87.131 | Latency: 1184.901 ms
+81 / 84
+Fetching data from http://13.211.63.122:8888/v1/chain/get_info
+Target: 13.211.63.122 | Latency: 762.153 ms
+82 / 84
+Fetching data from http://54.189.199.39:8888/v1/chain/get_info
+Target: 54.189.199.39 | Latency: 437.958 ms
+83 / 84
+Fetching data from http://eos.shangtv.cn:28888/v1/chain/get_info
+Target: 120.76.96.73 | Latency: 744.708 ms
+84 / 84
+Fetching data from http://n2.eosargentina.io:8888/v1/chain/get_info
+Target: 207.246.67.103 | Latency: 434.506 ms
+1 / 84
+Fetching data from http://94.154.212.15:8888/v1/chain/get_info
+Target: 94.154.212.15 | Latency: 492.851 ms
+2 / 84
+Fetching data from http://88.99.97.30:8888/v1/chain/get_info
+Target: 88.99.97.30 | Latency: 403.637 ms
+3 / 84
+Fetching data from http://193.93.219.219:8888/v1/chain/get_info
+Target: 193.93.219.219 | Latency: 474.956 ms
+4 / 84
+Fetching data from http://35.182.242.240:8888/v1/chain/get_info
+Target: 35.182.242.240 | Latency: 242.14 ms
+5 / 84
+Fetching data from http://79.136.20.192:8062/v1/chain/get_info
+Target: 79.136.20.192 | Latency: 476.156 ms
+6 / 84
+Fetching data from http://95.216.8.243:8765/v1/chain/get_info
+Target: 95.216.8.243 | Latency: 453.659 ms
+7 / 84
+Fetching data from http://93.176.188.7:8888/v1/chain/get_info
+Server is down
+8 / 84
+Fetching data from http://18.188.52.250:8877/v1/chain/get_info
+Target: 18.188.52.250 | Latency: 283.511 ms
+9 / 84
+Fetching data from http://149.202.180.100:8889/v1/chain/get_info
+Target: 149.202.180.100 | Latency: 1031.591 ms
+10 / 84
+Fetching data from http://95.213.195.96:8888/v1/chain/get_info
+Target: 95.213.195.96 | Latency: 497.704 ms
+11 / 84
+Fetching data from http://201.18.14.130:8889/v1/chain/get_info
+Target: 201.18.14.130 | Latency: 8.85 ms
+12 / 84
+Fetching data from http://54.233.222.22:8886/v1/chain/get_info
+Target: 54.233.222.22 | Latency: 33.293 ms
+13 / 84
+Fetching data from http://81.110.247.37:8427/v1/chain/get_info
+Server is down
+14 / 84
+Fetching data from http://35.189.107.125:8888/v1/chain/get_info
+Target: 35.189.107.125 | Latency: 428.786 ms
+15 / 84
+Fetching data from http://188.166.226.110:8888/v1/chain/get_info
+Target: 188.166.226.110 | Latency: 725.16 ms
+16 / 84
+Fetching data from http://86.181.185.47:8777/v1/chain/get_info
+Target: 86.181.185.47 | Latency: 416.835 ms
+17 / 84
+Fetching data from http://13.209.19.204:8888/v1/chain/get_info
+Target: 13.209.19.204 | Latency: 628.827 ms
+18 / 84
+Fetching data from http://35.185.242.132:80/v1/chain/get_info
+Server is down
+19 / 84
+Fetching data from http://35.197.244.244:8888/v1/chain/get_info
+Target: 35.197.244.244 | Latency: 425.556 ms
+20 / 84
+Fetching data from http://145.239.252.91:8888/v1/chain/get_info
+Server is down
+21 / 84
+Fetching data from http://95.216.20.181:7010/v1/chain/get_info
+Target: 95.216.20.181 | Latency: 434.635 ms
+22 / 84
+Fetching data from http://mpenjati.eosio.africa:8888/v1/chain/get_info
+Server is down
+23 / 84
+Fetching data from http://13.124.97.2:8801/v1/chain/get_info
+Target: 13.124.97.2 | Latency: 648.155 ms
+24 / 84
+Fetching data from http://46.101.95.5:8888/v1/chain/get_info
+Target: 46.101.95.5 | Latency: 388.549 ms
+25 / 84
+Fetching data from http://154.48.249.19:8888/v1/chain/get_info
+Server is down
+26 / 84
+Fetching data from http://218.253.69.190:8888/v1/chain/get_info
+Target: 218.253.69.190 | Latency: 688.559 ms
+27 / 84
+Fetching data from http://cheetah.jungle3.bptn.eosamsterdam.net:8888/v1/chain/get_info
+Server is down
+28 / 84
+Fetching data from http://173.212.219.222:8888/v1/chain/get_info
+Target: 173.212.219.222 | Latency: 425.943 ms
+29 / 84
+Fetching data from http://13.126.171.157:8888/v1/chain/get_info
+Server is down
+30 / 84
+Fetching data from http://195.201.131.218:8888/v1/chain/get_info
+Target: 195.201.131.218 | Latency: 454.823 ms
+31 / 84
