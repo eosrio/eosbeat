@@ -1,11 +1,48 @@
-# Eosbeat
+<h1 align="center">
+  <br>
+  eosbeat
+  <br>
+</h1>
+<h3 align="center">
+Network metrics tool for EOS.IO networks based on Elastic Beats
+</h3>
 
-Welcome to Eosbeat.
+*Made with :hearts: by [EOS Rio](https://steemit.com/@eosrio)*
+
+# Introduction
+
+Eosbeat will allow nodes on a EOS.IO network to consume data from an api that provides optimized topology information, thus being able to automatically set the optimal peers of a node.
+
+Eosbeat works by collecting response times from your server to all other nodes on your network, as defined by the nodes.json file. The data is sent to EOS Rio server, which will be processed later to provide an overall view of network performance from EOS.IO nodes.
+The ideal scenario is to have eosbeat running on all participating nodes of a network.
+
+We will be soon releasing a dashboard page with all data collected from the current test networks.
+
+A central elasticsearch server is useful to streamline the development process, but as soon as the topology optimization algorithm is tuned we can move it to a smart contract based solution.
+
+# Running
+
+To run on your node simply download the latest release, there's no need to install any dependencies.
+```
+wget https://github.com/eosrio/eosbeat/releases/download/v0.2.0/eosbeat.tar.gz
+tar -xzvf eosbeat.tar.gz
+cd release
+```
+Edit `eosbeat.conf.yml` and set username and password
+
+The current nodes will be loaded from the node.json file, which is currently set to the Jungle Testnet
+
+```
+mv eosbeat.conf.yml eosbeat.yml
+./run-eosbeat.sh
+```
+
+Stop with `./stop-eosbeat.sh`
+
+# Building Instructions
 
 Ensure that this folder is at the following location:
 `${GOPATH}/src/github.com/eosrio/eosbeat`
-
-## Getting Started with Eosbeat
 
 ### Requirements
 
@@ -38,7 +75,6 @@ in the same directory with the name eosbeat.
 ```
 make
 ```
-
 
 ### Run
 
