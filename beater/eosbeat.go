@@ -260,7 +260,7 @@ func (bt *Eosbeat) Run(b *beat.Beat) error {
 			return nil
 		case <-ticker.C:
 		}
-		fmt.Println("\n-------------------", index+1, "/", nodeCount, "-------------------")
+		fmt.Println("\n--------------------", index+1, "/", nodeCount, "--------------------")
 		evt := genEvent(nodeList, index)
 		if evt.Fields != nil {
 			bt.client.Publish(evt)

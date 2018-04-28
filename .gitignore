@@ -8,3 +8,6 @@
 /release
 eosbeat.pid
 eosbeat
+/logs
+*.log
+/data

@@ -20,26 +20,30 @@ We will be soon releasing a dashboard page with all data collected from the curr
 
 A central elasticsearch server is useful to streamline the development process, but as soon as the topology optimization algorithm is tuned we can move it to a smart contract based solution.
 
-# Running
+## Running
 
 To run on your node simply download the latest release, there's no need to install any dependencies.
 ```
-wget https://github.com/eosrio/eosbeat/releases/download/v0.2.0/eosbeat.tar.gz
-tar -xzvf eosbeat.tar.gz
-cd release
+$ wget https://github.com/eosrio/eosbeat/releases/download/v0.3.0/eosbeat.tar.gz
+$ tar -xzvf eosbeat.tar.gz
+$ cd release
 ```
 Edit `eosbeat.conf.yml` and set username and password
 
 The current nodes will be loaded from the node.json file, which is currently set to the Jungle Testnet
 
+To start eosbeat run:
 ```
-mv eosbeat.conf.yml eosbeat.yml
-./run-eosbeat.sh
+$ ./run-eosbeat.sh
 ```
 
-Stop with `./stop-eosbeat.sh`
+Stop with:
+```
+$ ./stop-eosbeat.sh
+```
 
-# Building Instructions
+
+## Building Instructions
 
 Ensure that this folder is at the following location:
 `${GOPATH}/src/github.com/eosrio/eosbeat`
