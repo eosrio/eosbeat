@@ -24,8 +24,8 @@ A central elasticsearch server is useful to streamline the development process, 
 
 To run on your node simply download the latest release, there's no need to install any dependencies.
 ```
-$ wget https://github.com/eosrio/eosbeat/releases/download/v0.3.0/eosbeat.tar.gz
-$ tar -xzvf eosbeat.tar.gz
+$ wget https://github.com/eosrio/eosbeat/releases/download/v0.3.0/eosbeat-v0.3.0.tar.gz
+$ tar -xzvf eosbeat-v0.3.0.tar.gz
 $ cd release
 ```
 Edit `eosbeat.conf.yml` and set username and password

@@ -3,5 +3,5 @@ eosbeat:
 output.elasticsearch:
   hosts: ["eosrio.io:9200"]
   protocol: "http"
-  username: "eosbeat"
-  password: "eosbeat"
+  username: "changeME"
+  password: "changeME"
