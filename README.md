@@ -37,6 +37,11 @@ To start eosbeat run:
 $ ./run-eosbeat.sh
 ```
 
+Check the output logs
+```
+$ tail -f out.log
+```
+
 Stop with:
 ```
 $ ./stop-eosbeat.sh
